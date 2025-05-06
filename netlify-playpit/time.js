@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
   const path = event.path;
   const parts = path.split('/').filter(Boolean); 
   
-  console.log(parts);
+  console.debug(parts);
   
   return {
     statusCode: 200,
