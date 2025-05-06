@@ -11,9 +11,7 @@
 exports.handler = async (event, context) => {
 	const path = event.path;
 	const parts = path.split('/').filter(Boolean);
-	const {
-		queryStringParameters
-	} = event;
+	const { queryStringParameters } = event;
 	console.error("test");
 	console.debug(parts);
 	console.debug(queryStringParameters);
