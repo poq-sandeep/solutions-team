@@ -13,8 +13,8 @@ const path = require("path");
 const fs = require("fs");
 
 exports.handler = async (event, context) => {
-	const path = event.path;
-	const parts = path.split('/').filter(Boolean);
+	const path1 = event.path;
+	const parts = path1.split('/').filter(Boolean);
 	const { queryStringParameters } = event;
 	console.error("test");
 	console.debug(parts);
