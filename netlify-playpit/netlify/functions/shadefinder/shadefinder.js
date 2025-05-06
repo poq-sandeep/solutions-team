@@ -20,8 +20,8 @@ exports.handler = async (event, context) => {
 	console.debug(parts);
 	console.debug(queryStringParameters);
 	
-	console.log(path.resolve(__dirname + "/functions/rev-shadefinder.json"));
-	const pathToJSON = path.resolve(__dirname + "/functions/rev-shadefinder.json");
+	console.log(path.resolve(__dirname + "/rev-shadefinder.json"));
+	const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
 	console.log(fs.existsSync(pathToJSON));
 	const shadefinderJSON = JSON.parse(fs.readFileSync(pathToJSON));
 
