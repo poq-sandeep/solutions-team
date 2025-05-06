@@ -20,10 +20,10 @@ exports.handler = async (event, context) => {
 	console.debug(parts);
 	console.debug(queryStringParameters);
 	
-	console.log(path.resolve(__dirname + "/rev-shadefinder.json"));
-	const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
+	console.log(path.resolve(__dirname + "functions/rev-shadefinder.json"));
+	const pathToJSON = path.resolve(__dirname + "functions/rev-shadefinder.json");
 	console.log(fs.existsSync(pathToJSON));
-	const jsonFile = fs.readFileSync(pathToJSON);
+	const shadefinderJSON = JSON.parse(fs.readFileSync(pathToJSON));
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
