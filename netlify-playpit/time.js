@@ -11,7 +11,7 @@
 exports.handler = async (event, context) => {
   const path = event.path;
   const parts = path.split('/').filter(Boolean); 
-  
+  console.error("test");
   console.debug(parts);
   
   return {
