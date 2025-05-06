@@ -8,6 +8,10 @@
 //     }),
 //   };
 // };
+
+const path = require("path");
+const fs = require("fs");
+
 exports.handler = async (event, context) => {
 	const path = event.path;
 	const parts = path.split('/').filter(Boolean);
@@ -15,6 +19,11 @@ exports.handler = async (event, context) => {
 	console.error("test");
 	console.debug(parts);
 	console.debug(queryStringParameters);
+	
+	console.log(path.resolve(__dirname + "/rev-shadefinder.json"));
+	const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
+	console.log(fs.existsSync(pathToJSON));
+	const jsonFile = fs.readFileSync(pathToJSON);
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
