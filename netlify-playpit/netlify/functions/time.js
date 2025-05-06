@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
 		statusCode: 200,
 		body: JSON.stringify({
 			"time": timeString,
-			"resourceManifest": null
+			"resourceManifest": null,
 			"id": "d0b0c47a-dec3-4510-93ae-14f61dcc0efd",
 			"component": {
 				"type": "vertical-scroll",
