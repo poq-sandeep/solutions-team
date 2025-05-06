@@ -9,28 +9,30 @@
 //   };
 // };
 exports.handler = async (event, context) => {
-  const path = event.path;
-  const parts = path.split('/').filter(Boolean);
-  const { queryStringParameters } = event;
-  console.error("test");
-  console.debug(parts);
-  console.debug(queryStringParameters);
-  
-  const now = new Date();
-  const timeString = now.toLocaleString(); // Get local time
+	const path = event.path;
+	const parts = path.split('/').filter(Boolean);
+	const {
+		queryStringParameters
+	} = event;
+	console.error("test");
+	console.debug(parts);
+	console.debug(queryStringParameters);
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      "time": timeString,
+	const now = new Date();
+	const timeString = now.toLocaleString(); // Get local time
+
+	return {
+		statusCode: 200,
+		body: JSON.stringify({
+			"time": timeString,
 			"resourceManifest": null,
 			"id": "d0b0c47a-dec3-4510-93ae-14f61dcc0efd",
 			"component": {
 				"type": "vertical-scroll",
 				"content": {
 					"components": [{
-						"content": {A4g45t2020
-							"title": "Color",
+						"content": {
+							A4g45t2020 "title": "Color",
 							"items": [{
 								"title": "Yellow",
 								"link": "content/ef5ba68c-fcda-44a2-b2ee-c061587bf405",
@@ -63,7 +65,6 @@ exports.handler = async (event, context) => {
 				"customData": null
 			},
 			"customData": null
-		}
-),
-  };
+		})
+	};
 };
