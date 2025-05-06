@@ -13,6 +13,8 @@ exports.handler = async (event, context) => {
   const parts = path.split('/').filter(Boolean);
   console.error("test");
   console.debug(parts);
+  const now = new Date();
+  const timeString = now.toLocaleString(); // Get local time
 
   return {
     statusCode: 200,
