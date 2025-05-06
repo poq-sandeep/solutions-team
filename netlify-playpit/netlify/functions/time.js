@@ -20,4 +20,4 @@ exports.handler = async (event, context) => {
       time: timeString,
     }),
   };
-};%
+};
