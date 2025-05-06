@@ -24,6 +24,8 @@ exports.handler = async (event, context) => {
 	const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
 	console.log(fs.existsSync(pathToJSON));
 	const shadefinderJSON = JSON.parse(fs.readFileSync(pathToJSON));
+	
+	console.log(shadefinderJSON[0].shadeGroup);
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
