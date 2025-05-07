@@ -29,8 +29,9 @@ exports.handler = async (event, context) => {
 	console.error("test");
 	console.debug(parts);
 	console.debug(queryStringParameters);
+	const selectedShadeGroup = queryStringParameters.path.split("~")[1]
 	
-	console.log( jp.query(shadefinderJSON, "$..[?(@.shadeGroup=='fair to light')].undertone"));
+	console.log( jp.query(shadefinderJSON, "$..[?(@.shadeGroup=='"+selectedShadeGroup+"')].undertone"));
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
@@ -83,7 +84,3 @@ exports.handler = async (event, context) => {
 	)
 	};
 };
-
-function findTones(selectedShadeGroup){
-
-}
