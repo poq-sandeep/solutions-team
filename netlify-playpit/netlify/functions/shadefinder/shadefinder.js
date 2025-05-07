@@ -19,6 +19,7 @@ console.log(fs.existsSync(pathToJSON));
 const shadefinderJSON = JSON.parse(fs.readFileSync(pathToJSON));
 
 // console.log(shadefinderJSON[0].shadeGroup);
+console.log( jp.query(shadeFinderJSON, "$..[?(@.shadeGroup=='fair to light')].undertone"));
 
 exports.handler = async (event, context) => {
 	const path1 = event.path;
