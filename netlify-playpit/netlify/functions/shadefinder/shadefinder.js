@@ -11,21 +11,25 @@
 
 const path = require("path");
 const fs = require("fs");
+let jp = require('jsonpath')
+
+console.log(path.resolve(__dirname + "/rev-shadefinder.json"));
+const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
+console.log(fs.existsSync(pathToJSON));
+const shadefinderJSON = JSON.parse(fs.readFileSync(pathToJSON));
+
+// console.log(shadefinderJSON[0].shadeGroup);
 
 exports.handler = async (event, context) => {
 	const path1 = event.path;
 	const parts = path1.split('/').filter(Boolean);
 	const { queryStringParameters } = event;
+	const selectedShadeGroup = queryStringParameters.path;
 	console.error("test");
 	console.debug(parts);
 	console.debug(queryStringParameters);
 	
-	console.log(path.resolve(__dirname + "/rev-shadefinder.json"));
-	const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
-	console.log(fs.existsSync(pathToJSON));
-	const shadefinderJSON = JSON.parse(fs.readFileSync(pathToJSON));
-	
-	console.log(shadefinderJSON[0].shadeGroup);
+	console.log( jp.query(shadeFinderJSON, "$..[?(@.shadeGroup=='fair to light')].undertone"));
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
@@ -78,3 +82,7 @@ exports.handler = async (event, context) => {
 	)
 	};
 };
+
+function findTones(selectedShadeGroup){
+
+}
