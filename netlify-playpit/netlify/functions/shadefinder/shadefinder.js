@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
 	console.debug(parts);
 	console.debug(queryStringParameters);
 	
-	console.log( jp.query(shadeFinderJSON, "$..[?(@.shadeGroup=='fair to light')].undertone"));
+	console.log( jp.query(shadefinderJSON, "$..[?(@.shadeGroup=='fair to light')].undertone"));
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
