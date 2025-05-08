@@ -1,0 +1,8 @@
+[dev]
+  port = 1234
+  [dev.https]
+     certFile = "cert.pem"
+     keyFile = "key.pem"
+
+[build]
+  functions = "functions"

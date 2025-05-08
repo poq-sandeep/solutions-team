@@ -25,62 +25,107 @@ exports.handler = async (event, context) => {
 	const path1 = event.path;
 	const parts = path1.split('/').filter(Boolean);
 	const { queryStringParameters } = event;
-	const selectedShadeGroup = queryStringParameters.path;
 	console.error("test");
 	console.debug(parts);
 	console.debug(queryStringParameters);
-	const selectedShadeGroup = queryStringParameters.path.split("~")[1]
+	const selectedShadeGroup = queryStringParameters.path?.split('~')[1];
+	const selectedTone = queryStringParameters.path?.split('~')[2];
+	const selectedShade = queryStringParameters.path?.split('~')[3];
 	
-	console.log( jp.query(shadefinderJSON, "$..[?(@.shadeGroup=='"+selectedShadeGroup+"')].undertone"));
+	
+	
+	const items = [];
+	if(selectedShadeGroup && !selectedTone){
+		const undertones = [...new Set(jp.query(shadefinderJSON, "$..[?(@.shadeGroup=='"+selectedShadeGroup+"')].undertone"))];
+		console.debug( undertones );		
+		for (i in undertones){
+			items.push({
+				title: undertones[i],
+				link: "content/charles~"+selectedShadeGroup+"~"+undertones[i],
+				imageUrl: "https://poqmbuat.blob.core.windows.net/app292/45585842-1.png?v=133910178050860000"
+				}	
+			)
+		}
+	}else if (selectedShadeGroup && selectedTone){
+		const shades = [...new Set(jp.query(shadefinderJSON, "$..[?(@.shadeGroup=='"+selectedShadeGroup+"' && @.undertone=='"+selectedTone+"')]"))];
+	
+		console.debug( shades );		
+		for (i in shades){
+			items.push({
+				title: shades[i].shade,
+				link: "content/charles~"+selectedShadeGroup+"~"+selectedTone+"~"+shades[i].shade,
+				imageUrl: "https://www.revolutionbeauty.com/on/demandware.static/-/Library-Sites-revbe-content-global/default/dw63ea9934/"+shades[i].img
+				}	
+			)
+		}
+	}
+	
 
 	const now = new Date();
 	const timeString = now.toLocaleString(); // Get local time
+	
+	var response = {
+		"time": timeString,
+		"resourceManifest": null,
+		"id": "d0b0c47a-dec3-4510-93ae-14f61dcc0efd",
+		"component": {
+			"type": "vertical-scroll",
+			"content": {
+				"components": [{
+					"content": {
+						"title": "Color",
+						"items": items,
+						"customData": {
+							"carousel-type": "swatch"
+						}
+					},
+					"modifiers": {
+						"padding": {
+							"top": 0,
+							"bottom": 0,
+							"left": 0,
+							"right": 0
+						}
+					},
+					"type": "image-carousel"
+				}]
+			},
+			"modifiers": {},
+			"customData": null
+		},
+		"customData": null
+	};
 
+	if (selectedShade){
+		response.component.content.components.push(createCarousel("F", selectedShade));
+		response.component.content.components.push(createCarousel("M", selectedShade));
+		response.component.content.components.push(createCarousel("L",selectedShade));
+	}
 	return {
 		statusCode: 200,
-		body: JSON.stringify({
-			"time": timeString,
-			"resourceManifest": null,
-			"id": "d0b0c47a-dec3-4510-93ae-14f61dcc0efd",
-			"component": {
-				"type": "vertical-scroll",
-				"content": {
-					"components": [{
-						"content": {
-							"title": "Color",
-							"items": [{
-								"title": "Yellow",
-								"link": "content/ef5ba68c-fcda-44a2-b2ee-c061587bf405",
-								"imageUrl": "https://poqmbuat.blob.core.windows.net/app292/45585842-1.png?v=133910178050860000"
-							}, {
-								"title": "Beige",
-								"link": "content/d0b0c47a-dec3-4510-93ae-14f61dcc0efd",
-								"imageUrl": "https://poqmbuat.blob.core.windows.net/app292/45585843-1.png?v=133910178295760000"
-							}, {
-								"title": "Golden",
-								"link": "content/d0b0c47a-dec3-4510-93ae-14f61dcc0efd",
-								"imageUrl": "https://poqmbuat.blob.core.windows.net/app292/45585844-1.png?v=133910178550590000"
-							}],
-							"customData": {
-								"carousel-type": "swatch"
-							}
-						},
-						"modifiers": {
-							"padding": {
-								"top": 0,
-								"bottom": 0,
-								"left": 0,
-								"right": 0
-							}
-						},
-						"type": "image-carousel"
-					}]
-				},
-				"modifiers": {},
-				"customData": null
-			},
-			"customData": null
-		}
-	)
+		headers: {
+		      "Content-Type": "application/json"
+		},
+		
+		body: JSON.stringify(response)
 	};
 };
+
+function createCarousel (coverage, selectedShade){
+	return {
+							"content": {
+								"title": coverage=="F"?"Full":(coverage=="L"?"Light": (coverage=="M"?"Medium":"None")) ,
+								"url": "/products/charles~"+selectedShade+"~options"+coverage
+							},
+							"modifiers": {
+								"padding": {
+									"top": 0,
+									"bottom": 0,
+									"left": 0,
+									"right": 0
+								}
+							},
+							"type": "url-carousel"
+						};
+	
+}
