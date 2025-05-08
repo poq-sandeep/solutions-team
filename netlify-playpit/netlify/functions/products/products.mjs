@@ -1,7 +1,7 @@
 // Docs on request and context https://docs.netlify.com/functions/build/#code-your-function-2
 const path = require("path");
 const fs = require("fs");
-let jp = require('jsonpath')
+let jp = require('jsonpath');
 
 console.log(path.resolve(__dirname + "/../shadefinder/rev-shadefinder.json"));
 const pathToJSON = path.resolve(__dirname + "/../shadefinder/rev-shadefinder.json");

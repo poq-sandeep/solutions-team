@@ -1,17 +1,6 @@
-// exports.handler = async (event, context) => {
-//   const now = new Date();
-//   const timeString = now.toLocaleString(); // Get local time
-//   return {
-//     statusCode: 200,
-//     body: JSON.stringify({
-//       time: timeString,
-//     }),
-//   };
-// };
-
 const path = require("path");
 const fs = require("fs");
-let jp = require('jsonpath')
+let jp = require('jsonpath');
 
 console.log(path.resolve(__dirname + "/rev-shadefinder.json"));
 const pathToJSON = path.resolve(__dirname + "/rev-shadefinder.json");
