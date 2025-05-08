@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-let jp = require('./node_modules/jsonpath');
+let jp = require("jsonpath");
 
 console.log(path.resolve(__dirname + "/../shadefinder/rev-shadefinder.json"));
 const pathToJSON = path.resolve(__dirname + "/../shadefinder/rev-shadefinder.json");
