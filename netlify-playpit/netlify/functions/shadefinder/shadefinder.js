@@ -15,7 +15,8 @@ exports.handler = async (event, context) => {
 	const parts = path1.split('/').filter(Boolean);
 	const { queryStringParameters } = event;
 	console.error("test");
-	console.debug(parts);
+	console.debug(event.headers.host);
+	//console.debug(parts);
 	console.debug(queryStringParameters);
 	const selectedShadeGroup = queryStringParameters.path?.split('~')[1];
 	const selectedTone = queryStringParameters.path?.split('~')[2];
@@ -31,7 +32,9 @@ exports.handler = async (event, context) => {
 			items.push({
 				title: undertones[i],
 				link: "content/charles~"+selectedShadeGroup+"~"+undertones[i],
-				imageUrl: "https://poqmbuat.blob.core.windows.net/app292/45585842-1.png?v=133910178050860000"
+				//imageUrl: "https://poqmbuat.blob.core.windows.net/app292/45585842-1.png?v=133910178050860000"
+				// imageUrl: event."https://musical-truffle-5e8a45.netlify.app/public/undertones/"+undertones[i].toLowerCase()+".png"
+				imageUrl: (event.headers.host.indexOf("localhost")>-1?"https://localhost:1234/public/undertones/":"https://musical-truffle-5e8a45.netlify.app/public/undertones/")+undertones[i].toLowerCase()+".png"
 				}	
 			)
 		}
