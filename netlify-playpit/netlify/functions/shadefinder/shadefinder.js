@@ -33,8 +33,8 @@ exports.handler = async (event, context) => {
 				title: undertones[i],
 				link: "content/charles~"+selectedShadeGroup+"~"+undertones[i],
 				//imageUrl: "https://poqmbuat.blob.core.windows.net/app292/45585842-1.png?v=133910178050860000"
-				// imageUrl: event."https://musical-truffle-5e8a45.netlify.app/public/undertones/"+undertones[i].toLowerCase()+".png"
-				imageUrl: (event.headers.host.indexOf("localhost")>-1?"https://localhost:1234/public/undertones/":"https://musical-truffle-5e8a45.netlify.app/public/undertones/")+undertones[i].toLowerCase()+".png"
+				 imageUrl: "https://musical-truffle-5e8a45.netlify.app/public/undertones/"+undertones[i].toLowerCase()+".png"
+				//imageUrl: (event.headers.host.indexOf("localhost")>-1?"https://localhost.charles:1234/public/undertones/":"https://musical-truffle-5e8a45.netlify.app/public/undertones/")+undertones[i].toLowerCase()+".png"
 				}	
 			)
 		}
