@@ -1,0 +1,167 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/styles.css">
+    <link rel="manifest" href="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/manifest.json">
+    <style>@media screen and (min-aspect-ratio: 720/1280) {
+                #application-canvas.fill-mode-KEEP_ASPECT {
+                    width: auto;
+                    height: 100%;
+                    margin: 0 auto;
+                }
+            }</style>
+    <title>Collect your e.l.f</title>
+    <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/playcanvas-stable.min.js"></script>
+    <script>
+        window.ASSET_PREFIX = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/";
+        window.SCRIPT_PREFIX = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/";
+        window.SCENE_PATH = "2210402.json";
+        window.CONTEXT_OPTIONS = {
+            'antialias': false,
+            'alpha': true,
+            'preserveDrawingBuffer': false,
+            'deviceTypes': [`webgl2`, `webgl1`],
+            'powerPreference': "default"
+        };
+        window.SCRIPTS = [ 221309414, 221310320, 231635406, 233259590, 233491131, 233556989, 233597027, 233600424, 233637330, 233751083, 233751087, 233751254, 233751255, 233751256, 233751257, 233751258, 233751259, 233751260, 233751261, 233751270, 233876367, 234394350, 234421832, 234868604, 234869845, 235260853, 235263756, 239602830, 239839651, 240034505, 240077352, 240912595, 240912809, 241540113, 241608931, 242957498, 243258229, 243265924, 243927965 ];
+        window.CONFIG_FILENAME = "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/config.json";
+        window.INPUT_SETTINGS = {
+            useKeyboard: true,
+            useMouse: true,
+            useGamepads: false,
+            useTouch: true
+        };
+        pc.script.legacy = false;
+        window.PRELOAD_MODULES = [
+        ];
+    </script>
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script><script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/__game-scripts.js"></script><style type="text/css">body {
+    background-color: #000000;
+}
+
+#application-splash-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200000;
+    height: 100%;
+    width: 100%;
+    background-color: #CFFFA2;
+}
+
+#application-splash {
+    position: absolute;
+    top: calc(50% - 200px);
+    width: 300px;
+    left: calc(50% - 150px);
+}
+
+#application-splash dotlottie-player {
+    width: 100%;
+    height: auto;
+}
+
+#splash-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 20px;
+}
+
+#progress-bar-container {
+    margin: 20px auto 0 auto;
+    height: 2px;
+    width: 100%;
+    display: none;
+    background-color: #1d292c;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #f60;
+}
+
+@media (max-width: 480px) {
+    #application-splash {
+        width: 200px;
+        left: calc(50% - 138.5px);
+        top: calc(50% - 268px);
+    }
+    #application-splash dotlottie-player {
+        width: 200px;
+        height: 200px;
+    }
+    #splash-image {
+        width: 200px;
+        height: auto;
+    }
+}</style><style>/* Leaflet Maps Integration Styles */
+
+/* Location Permission Container */
+#location-permission-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    text-align: center;
+}
+
+/* Permission Container Title */
+#location-permission-container h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Permission Container Text */
+#location-permission-container p {
+    margin: 0 0 20px 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Permission Button */
+#location-permission-container button {
+    padding: 10px 20px;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#location-permission-container button:hover {
+    background-color: #3367D6;
+}
+
+#location-permission-container button:active {
+    background-color: #2A56C6;
+}
+
+/* Map Container */
+#map {
+    display: none;
+}
+
+/* Status Bar */
+#status-bar {
+    /* Add your status bar styles here if needed */
+}</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script></head>
+<body>
+    <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/__start__.js"></script><div class="container"><div id="map" style="width: 100%; height: 100vh;z-index: 0;"></div>
+<div id="status-bar" style="position: absolute; top: 10px; right: 10px; background: white; padding: 10px; border-radius: 5px; z-index: 1000; display: none;">Location access prompt</div></div><canvas id="application-canvas" tabindex="0" style="user-select: none; width: 519px; height: 700px;" width="1038" height="1400" class="fill-mode-FILL_WINDOW"></canvas>
+    <script src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/e50d0f60/__loading__.js"></script>
+
+
+<div id="location-permission-container"><h3>Location Permission Required</h3><p>This app needs your location to place markers on the map.</p><button>Enable Location</button></div></body></html>
